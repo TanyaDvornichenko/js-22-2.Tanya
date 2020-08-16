@@ -57,33 +57,39 @@ addLogin добавляет или не добавляет логин в мас�
 
 function isLoginValid (login, min = 4, max = 16) {
 
-    let isLoginValid = false;  
-    for (const Log of login) {
+    return login.length >= min && login.length <= max;
 
-    if (Log.length > min &&  Log.length <= max) {
-    isLoginValid = true;
-    }
-
-  }
-  return isLoginValid;
 }
 
 
-// function isLoginUnique  (allLogins, login) {
-//   'use strict';
-//   // Write code under this line
+function isLoginUnique  (allLogins, login) {
+  'use strict';
+  // Write code under this line
   
-// }
+}
 
-// function addLogin (allLogins, login) {
-//   'use strict';
-//   const SUCCESS = 'Логин успешно добавлен!';
-//   const REFUSAL = 'Такой логин уже используется!';
-//   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
-//   let message;
-//   // Write code under this line    
-  
-// }
+function addLogin (allLogins, login) {
+  'use strict';
+  const SUCCESS = 'Логин успешно добавлен!';
+  const REFUSAL = 'Такой логин уже используется!';
+  const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
+  let message;
+  // Write code under this line    
+  if (!isLoginValid(login)) {
+    message = ERROR;
+
+    return message;
+} else if (!isLoginUnique(allLogins, login)) {
+    message = REFUSAL;
+
+    return message;
+} else {
+    allLogins.push(login);
+    message = SUCCESS;
+
+    return message;
+}
+}
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
